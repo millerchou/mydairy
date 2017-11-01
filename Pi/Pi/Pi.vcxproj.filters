@@ -32,5 +32,8 @@
     <ClCompile Include="Pi.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="usr.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
