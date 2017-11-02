@@ -6,16 +6,15 @@ const double halflife = 0.5;
 int main()
 {
 	MyRandom a;
-	//a.setRandomSeed(1);
-	int sum = 10000;
-	int year = 0;
-	while(sum>0){
-		int max = sum;
-		for (int i = 0; i < max; i++)
-			if (a.randomChance(halflife))
-				sum--;
-		cout << "there are " << sum << " atoms at the end of " << ++year << endl;
+	double circle = 0.0;
+	double x, y;
+	for (int i = 0; i < 10000; i++) {
+		x = a.randomReal(-1.0,1.0);
+		y = a.randomReal(-1.0,1.0);
+		if (x*x + y*y < 1)
+			circle++;
 	}
+	cout << circle / 10000*4;
 	getchar();
 	return 0;
 }
