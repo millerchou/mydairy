@@ -21,7 +21,7 @@
     <ClInclude Include="targetver.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="Pi.h">
+    <ClInclude Include="smallCla.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
@@ -29,10 +29,10 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Pi.cpp">
+    <ClCompile Include="usr.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="usr.cpp">
+    <ClCompile Include="smallCla.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
