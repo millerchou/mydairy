@@ -2,19 +2,28 @@
 
 #include "stdafx.h"
 #include"smallCla.h"
+#include<vector>
 const double halflife = 0.5;
 int main()
 {
 	MyRandom a;
-	double circle = 0.0;
-	double x, y;
-	for (int i = 0; i < 10000; i++) {
-		x = a.randomReal(-1.0,1.0);
-		y = a.randomReal(-1.0,1.0);
-		if (x*x + y*y < 1)
-			circle++;
+	vector<bool> allhead;
+	int count = 0;
+
+	while (1) {
+		count++;
+		if (a.randomChance(halflife)) {
+			cout << "heads" << endl;
+			allhead.push_back(true);
+			if (allhead.size() == 3 && allhead[0] && allhead[1])
+				break;
+		}
+		else {
+			cout << "tails" << endl;
+			allhead.swap(vector<bool>());
+		}
 	}
-	cout << circle / 10000*4;
+	cout << "it took " << count << " flips to get 3 consecutive heads.";
 	getchar();
 	return 0;
 }
