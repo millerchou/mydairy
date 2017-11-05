@@ -26,7 +26,7 @@
 #include"stdafx.h"
 #ifndef _error_h
 #define _error_h
-#include"stack.h"
+//#include"stack.h"
 #include <string>
 #include <exception>
 
@@ -70,6 +70,6 @@ private:
 
 void error(std::string msg);
 
-#include "private/main.h"
+//#include "private/main.h"
 
 #endif

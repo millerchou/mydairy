@@ -1,8 +1,8 @@
+
 /*
- * File: error.h
- * -------------
- * This file defines the <code>ErrorException</code> class and the
- * <code>error</code> function.
+ * File: error.cpp
+ * ---------------
+ * Implementation of the error function.
  */
 
 /*************************************************************************/
@@ -22,54 +22,40 @@
 /* You should have received a copy of the GNU General Public License     */
 /* along with this program.  If not, see <http://www.gnu.org/licenses/>. */
 /*************************************************************************/
-#pragma once
 #include"stdafx.h"
-#ifndef _error_h
-#define _error_h
-#include"stack.h"
-#include <string>
 #include <exception>
+#include <string>
+#include <iostream>
+#include "error.h"
+using namespace std;
+
+/* Definitions for the ErrorException class */
+
+ErrorException::ErrorException(string msg) {
+   this->msg = msg;
+}
+
+ErrorException::~ErrorException() throw () {
+   /* Empty */
+}
+
+string ErrorException::getMessage() const {
+   return msg;
+}
+
+const char *ErrorException::what() const throw () {
+   return ("Error: " + msg).c_str();
+}
 
 /*
- * Class: ErrorException
- * ---------------------
- * This exception is thrown by calls to the <code>error</code>
- * function.  Typical code for catching errors looks like this:
- *
- *<pre>
- *    try {
- *       ... code in which an error might occur ...
- *    } catch (ErrorException & ex) {
- *       ... code to handle the error condition ...
- *    }
- *</pre>
- *
- * If an <code>ErrorException</code> is thrown at any point in the
- * range of the <code>try</code> (including in functions called from
- * that code), control will jump immediately to the error handler.
+ * Implementation notes: error
+ * ---------------------------
+ * Earlier implementations of error made it possible, at least on the
+ * Macintosh, to help the debugger generate a backtrace at the point
+ * of the error.  Unfortunately, doing so is no longer possible if
+ * the errors are catchable.
  */
 
-class ErrorException : public std::exception {
-public:
-   ErrorException(std::string msg);
-   virtual ~ErrorException() throw ();
-   virtual std::string getMessage() const;
-   virtual const char *what() const throw ();
-
-private:
-   std::string msg;
-};
-
-/*
- * Function: error
- * Usage: error(msg);
- * ------------------
- * Signals an error condition in a program by throwing an
- * <code>ErrorException</code> with the specified message.
- */
-
-void error(std::string msg);
-
-#include "private/main.h"
-
-#endif
+void error(string msg) {
+   throw ErrorException(msg);
+}
