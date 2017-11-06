@@ -7,6 +7,7 @@
 #include<cstdlib>
 #include<ctime>
 #include<iomanip>
+#include<stack>
 #include"stanford\include\grid.h"
 using namespace std;
 
@@ -44,6 +45,8 @@ void removeCharacters(string&str, const string& remove);//É¾³ýstrÖÐµÄÃ¿¸öremove×
 
 //void fixCounts(Grid<bool>& mines, Grid<int>& counts);
 
+//µÝ¹é
+//--------------------------------------------------------------------------------------
 int cannonball(int n);
 
 int raiseToPower(int n, int k);
@@ -55,7 +58,14 @@ int digitSum(int n);
 int digitalRoot(int n);
 
 string reverse(string str);
+
 string intorever(int n, string& str);
+
+void moveTower(int n, char start, char finish, char tmp);
+void moveSingleDisk(char start, char finish);
+
+void moveTower(stack<char>& start, stack<char>& dest, stack<char>& tmp,int n);
+void moveSingleDisk(stack<char>& start, stack<char>& dest);
 #endif // !SMALLCLA_H
 
 
